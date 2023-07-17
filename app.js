@@ -6,6 +6,7 @@ const logger = require('morgan');
 const app = express();
 
 // router
+const categoriesRouter = require('./app/api/v1/categories/router');
 
 const v1 = '/api/v1';
 
@@ -20,5 +21,7 @@ app.get('/', (req, res) => {
     message: 'Welcome to Explorejosari API',
   });
 });
+
+app.use(`${v1}/cms`, categoriesRouter);
 
 module.exports = app;
