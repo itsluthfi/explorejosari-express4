@@ -3,6 +3,8 @@ const {
   getAllNews,
   createNews,
   getOneNews,
+  updateNews,
+  deleteNews,
 } = require('../../../services/mongoose/news');
 
 const { StatusCodes } = require('http-status-codes');
@@ -43,4 +45,28 @@ const find = async (req, res, next) => {
   }
 };
 
-module.exports = { create, index, find };
+const update = async (req, res, next) => {
+  try {
+    const result = await updateNews(req);
+
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy = async (req, res, next) => {
+  try {
+    const result = await deleteNews(req);
+
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { create, index, find, update, destroy };
