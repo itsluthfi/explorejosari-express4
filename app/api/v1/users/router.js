@@ -10,5 +10,3 @@ const {
 router.post('/users', authenticateUser, authorizeRoles('admin'), createCMSUser);
 
 module.exports = router;
-
-// TODO: Implement auth middleware
