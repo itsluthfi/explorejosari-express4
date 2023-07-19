@@ -9,6 +9,7 @@ const app = express();
 const categoriesRouter = require('./app/api/v1/categories/router');
 const newsRouter = require('./app/api/v1/news/router');
 const galleriesRouter = require('./app/api/v1/galleries/router');
+const usersRouter = require('./app/api/v1/users/router');
 
 const v1 = '/api/v1';
 
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 app.use(`${v1}/cms`, categoriesRouter);
 app.use(`${v1}/cms`, newsRouter);
 app.use(`${v1}/cms`, galleriesRouter);
+app.use(`${v1}/cms`, usersRouter);
 
 // middlewares
 app.use(notFoundMiddleware);
